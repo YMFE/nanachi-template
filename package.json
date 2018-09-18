@@ -1,0 +1,23 @@
+{
+  "name": "qunar",
+  "version": "0.0.1",
+  "description": "template for nanachi",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YMFE/nanachi-template.git"
+  },
+  "keywords": [
+    "nanachi",
+    "nanachi-template"
+  ],
+  "author": "YMFE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YMFE/nanachi-template/issues"
+  },
+  "homepage": "https://github.com/YMFE/nanachi-template#readme"
+}
