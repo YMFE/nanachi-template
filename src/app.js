@@ -1,101 +1,119 @@
 import React from '@react';
-
-import './pages/index';
-
-import './pages/my/index';
-import './pages/classify/index';
-import './pages/cart/index';
-import './pages/details/index';
-import './pages/brand/index';
-import './pages/list/index';
-
+import './pages/home/index';
+import './pages/playlist/index';
+import './pages/playing/index';
 import './app.less';
+import url from './utils/bsurl';
+let bsurl = url.bsurl;
 
 class Demo extends React.Component {
   config = {
       window: {
-          backgroundTextStyle: 'light',
-          navigationBarBackgroundColor: '#0088a4',
-          navigationBarTitleText: 'mpreact',
           navigationBarTextStyle: '#fff',
-          backgroundColor: '#F2F2F2'
-      },
-      tabBar: {
-          color: '#6e6d6b',
-          selectedColor: '#f9f027',
-          borderStyle: 'white',
-          backgroundColor: '#292929',
-          list: [
-              {
-                  pagePath: 'pages/index',
-                  iconPath: 'assets/images/footer-icon-01.png',
-                  selectedIconPath: 'assets/images/footer-icon-01-active.png',
-                  text: '微商城'
-              },
-              {
-                  pagePath: 'pages/classify/index',
-                  iconPath: 'assets/images/footer-icon-02.png',
-                  selectedIconPath: 'assets/images/footer-icon-02-active.png',
-                  text: '分类'
-              },
-              {
-                  pagePath: 'pages/cart/index',
-                  iconPath: 'assets/images/footer-icon-03.png',
-                  selectedIconPath: 'assets/images/footer-icon-03-active.png',
-                  text: '购物车'
-              },
-              {
-                  pagePath: 'pages/my/index',
-                  iconPath: 'assets/images/footer-icon-04.png',
-                  selectedIconPath: 'assets/images/footer-icon-04-active.png',
-                  text: '我的'
-              }
-          ]
+          navigationBarTitleText: 'Music',
+          backgroundColor: '#fbfcfd',
+          navigationBarBackgroundColor: '#BB2C08'
       }
   };
   globalData = {
-      userInfo: null
+      hasLogin: false,
+      hide: false,
+      list_am: [],
+      list_dj: [],
+      list_fm: [],
+      list_sf: [],
+      index_dj: 0,
+      index_fm: 0,
+      index_am: 0,
+      playing: false,
+      playtype: 1,
+      curplay: {},
+      shuffle: 1,
+      globalStop: true,
+      currentPosition: 0,
+      staredlist: [],
+      cookie: '',
+      user: {}
   };
   onLaunch() {
       // eslint-disable-next-line
     console.log('App launched');
-      //调用登录接口
-      wx.login({
-          success: function(r) {
-              if (r.code) {
-                  // eslint-disable-next-line
-                  let code = r.code;
-                  wx.getUserInfo({
-                      success: function() {
-                          // console.log('res', res);
-                      }
-                  });
+  }
+  stopmusic() {
+    
+      wx.pauseBackgroundAudio();
+  }
+
+  seekmusic(type, seek, cb) {
+      var that = this;
+      var m = this.globalData.curplay;
+      if (!m.id) return;
+      this.globalData.playtype = type;
+      if (cb) {
+          this.playing(type, cb, seek);
+      } else {
+          this.geturl(function() {
+              that.playing(type, cb, seek);
+          });
+      }
+  }
+
+  geturl(suc, err) {
+      var that = this;
+      var m = that.globalData.curplay;
+      wx.request({
+          url: bsurl + 'music/url',
+          data: {
+              id: m.id,
+              br: 128000
+          },
+          success: function(a) {
+              a = a.data.data[0];
+              if (!a.url) {
+                  err && err();
+              } else {
+                  that.globalData.curplay.url = a.url;
+                  that.globalData.curplay.getutime = new Date().getTime();
+                  if (that.globalData.staredlist.indexOf(that.globalData.curplay.id) != -1) {
+                      that.globalData.curplay.starred = true;
+                      that.globalData.curplay.st = true;
+                  }
+                  suc && suc();
               }
           }
       });
-
   }
-//   getUserInfo(cb) {
-//     var that = this;
-//     if (this.globalData.userInfo) {
-//       typeof cb == 'function' && cb(this.globalData.userInfo);
-//     } else {
-//       //调用登录接口
-//       wx.login({
-//         success: function(res) {
-//           if (res.code) {
-//             console.log('code', res.code);
-//           }
-//           //   wx.getUserInfo({
-//           //     success: function (res) {
-//           //       that.globalData.userInfo = res.userInfo
-//           //       typeof cb == "function" && cb(that.globalData.userInfo)
-//           //     }
-//           //   })
-//         }
-//       });
-//     }
-//   }
+
+  playing(type, cb, seek) {
+      var that = this;
+      var m = that.globalData.curplay;
+      wx.playBackgroundAudio({
+          dataUrl: m.url,
+          title: m.name,
+          success: function() {
+              
+              if (seek != undefined) {
+                  wx.seekBackgroundAudio({ position: seek });
+              }
+              that.globalData.globalStop = false;
+              that.globalData.playtype = type;
+              that.globalData.playing = true;
+              // nt.postNotificationName('music_toggle', {
+              //   playing: true,
+              //   music: that.globalData.curplay,
+              //   playtype: that.globalData.playtype
+              // });
+              cb && cb();
+          },
+          fail: function() {
+              if (type != 2) {
+                  that.nextplay(1);
+              } else {
+                  that.nextfm();
+              }
+          }
+      });
+  }
 }
 
 // eslint-disable-next-line
