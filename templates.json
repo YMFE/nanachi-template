@@ -1,0 +1,20 @@
+{
+  "qunar": {
+    "value": "qunar",
+    "name": "默认模板",
+    "checkout": "master",
+    "url": "https://github.com/YMFE/nanachi-template.git"
+  },
+  "music": {
+    "value": "music",
+    "name": "音乐 APP",
+    "checkout": "music",
+    "url": "https://github.com/YMFE/nanachi-template.git"
+  },
+  "pdd": {
+    "value": "pdd",
+    "name": "在线商城",
+    "checkout": "pdd",
+    "url": "https://github.com/YMFE/nanachi-template.git"
+  }
+}
