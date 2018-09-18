@@ -1,107 +1,102 @@
 import React from '@react';
-import './pages/index/index';
 
+import './pages/index';
 
-import './pages/demo/base/index';
-
-import './pages/demo/native/index/index';
-import './pages/demo/native/button/index';
-import './pages/demo/native/checkbox/index';
-import './pages/demo/native/input/index';
-import './pages/demo/native/slider/index';
-import './pages/demo/native/picker/index';
-import './pages/demo/native/radio/index';
-import './pages/demo/native/textarea/index';
-import './pages/demo/native/label/index';
-import './pages/demo/native/view/index';
-import './pages/demo/native/scrollView/index';
-import './pages/demo/native/movableView/index';
-import './pages/demo/native/swiper/index';
-import './pages/demo/native/audio/index';
-import './pages/demo/native/image/index';
-import './pages/demo/native/video/index';
-import './pages/demo/native/camera/index';
-
-import './pages/demo/syntax/index';
-import './pages/demo/syntax/api/index';
-import './pages/demo/syntax/stateless/index';
-import './pages/demo/syntax/loop/index';
-import './pages/demo/syntax/loop2/index';
-import './pages/demo/syntax/loop3/index';
-import './pages/demo/syntax/extend/index';
-import './pages/demo/syntax/inlineStyle/index';
-import './pages/demo/syntax/if/index';
-import './pages/demo/syntax/children/index';
-import './pages/demo/syntax/await/index';
-import './pages/demo/syntax/multiple/index';
-import './pages/demo/syntax/renderprops/index';
-import './pages/demo/syntax/request/index';
-
-// import './pages/demo/syntax/redux/index';
-
-import './pages/demo/ticketSearch/index';
-import './pages/demo/calendar/index';
-import './pages/demo/boat/index';
-import './pages/demo/scenic/index';
-import './pages/demo/strategy/index';
-import './pages/demo/userCenter/index';
-import './pages/demo/question/index/index';
-import './pages/demo/question/detail/index';
-import './pages/demo/cardList/index';
-import './pages/demo/citySelect/index';
+import './pages/my/index';
+import './pages/classify/index';
+import './pages/cart/index';
+import './pages/details/index';
+import './pages/brand/index';
+import './pages/list/index';
 
 import './app.less';
-//import store from './store/index';
 
 class Demo extends React.Component {
-    config = {
-        window: {
-            backgroundTextStyle: 'light',
-            navigationBarBackgroundColor: '#0088a4',
-            navigationBarTitleText: 'mpreact',
-            navigationBarTextStyle: '#fff'
-        },
-        tabBar: {
-            'color': '#929292',
-            'selectedColor': '#00bcd4',
-            'borderStyle': 'black',
-            'backgroundColor': '#ffffff',
-            'list': [
-                {
-                    'pagePath': 'pages/index/index',
-                    'iconPath': 'assets/image/homepage_normal.png',
-                    'selectedIconPath': 'assets/image/homepage_select.png',
-                    'text': '首页',
-                    'name': 'Home',
-                    'selected': true
-                },
-                {
-                    'pagePath': 'pages/demo/question/index/index',
-                    'iconPath': 'assets/image/question_normal.png',
-                    'selectedIconPath': 'assets/image/question_select.png',
-                    'text': '问答社区',
-                    'name': 'questionAndAnswer'
-                },
-                {
-                    'pagePath': 'pages/demo/userCenter/index',
-                    'iconPath': 'assets/image/uc_normal.png',
-                    'selectedIconPath': 'assets/image/uc_select.png',
-                    'text': '我的',
-                    'name': 'My'
-                }
-            ]
-        }
-    };
-    globalData = {
-        ufo: 'ufo'
-    };
-    onLaunch() {
-        // eslint-disable-next-line
-        console.log('App launched');
-    }
-    
+  config = {
+      window: {
+          backgroundTextStyle: 'light',
+          navigationBarBackgroundColor: '#0088a4',
+          navigationBarTitleText: 'mpreact',
+          navigationBarTextStyle: '#fff',
+          backgroundColor: '#F2F2F2'
+      },
+      tabBar: {
+          color: '#6e6d6b',
+          selectedColor: '#f9f027',
+          borderStyle: 'white',
+          backgroundColor: '#292929',
+          list: [
+              {
+                  pagePath: 'pages/index',
+                  iconPath: 'assets/images/footer-icon-01.png',
+                  selectedIconPath: 'assets/images/footer-icon-01-active.png',
+                  text: '微商城'
+              },
+              {
+                  pagePath: 'pages/classify/index',
+                  iconPath: 'assets/images/footer-icon-02.png',
+                  selectedIconPath: 'assets/images/footer-icon-02-active.png',
+                  text: '分类'
+              },
+              {
+                  pagePath: 'pages/cart/index',
+                  iconPath: 'assets/images/footer-icon-03.png',
+                  selectedIconPath: 'assets/images/footer-icon-03-active.png',
+                  text: '购物车'
+              },
+              {
+                  pagePath: 'pages/my/index',
+                  iconPath: 'assets/images/footer-icon-04.png',
+                  selectedIconPath: 'assets/images/footer-icon-04-active.png',
+                  text: '我的'
+              }
+          ]
+      }
+  };
+  globalData = {
+      userInfo: null
+  };
+  onLaunch() {
+      // eslint-disable-next-line
+    console.log('App launched');
+      //调用登录接口
+      wx.login({
+          success: function(r) {
+              if (r.code) {
+                  // eslint-disable-next-line
+                  let code = r.code;
+                  wx.getUserInfo({
+                      success: function() {
+                          // console.log('res', res);
+                      }
+                  });
+              }
+          }
+      });
+
+  }
+//   getUserInfo(cb) {
+//     var that = this;
+//     if (this.globalData.userInfo) {
+//       typeof cb == 'function' && cb(this.globalData.userInfo);
+//     } else {
+//       //调用登录接口
+//       wx.login({
+//         success: function(res) {
+//           if (res.code) {
+//             console.log('code', res.code);
+//           }
+//           //   wx.getUserInfo({
+//           //     success: function (res) {
+//           //       that.globalData.userInfo = res.userInfo
+//           //       typeof cb == "function" && cb(that.globalData.userInfo)
+//           //     }
+//           //   })
+//         }
+//       });
+//     }
+//   }
 }
-// React.applyAppStore({});
 
 // eslint-disable-next-line
 App(new Demo());
