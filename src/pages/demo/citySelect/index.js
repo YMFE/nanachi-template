@@ -16,7 +16,7 @@ class P extends React.Component {
             title: '获取资源中',
             mask: true
         });
-        React.wx.request({
+        React.api.request({
             url: 'http://yapi.demo.qunar.com/mock/18752/qunar/city',
             success: function(data) {
                 wx.hideLoading();

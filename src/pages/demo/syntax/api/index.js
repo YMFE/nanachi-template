@@ -50,7 +50,7 @@ class P extends React.Component {
                 console.log(res);
             })
             .catch(function() {
-                React.wx.showModal({
+                React.api.showModal({
                     title: '提示',
                     content: '服务器出错了',
                     success: function(res) {
@@ -72,7 +72,7 @@ class P extends React.Component {
                 type: 'wgs84'
             })
             .then(function(res) {
-                return React.wx.showModal({
+                return React.api.showModal({
                     title: '提示',
                     content: `latitude: ${res.latitude},  longitude: ${
                         res.longitude

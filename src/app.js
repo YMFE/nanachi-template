@@ -1,7 +1,6 @@
 import React from '@react';
 import './pages/index/index';
 
-
 import './pages/demo/base/index';
 
 import './pages/demo/native/index/index';
@@ -28,6 +27,7 @@ import './pages/demo/syntax/stateless/index';
 import './pages/demo/syntax/loop/index';
 import './pages/demo/syntax/loop2/index';
 import './pages/demo/syntax/loop3/index';
+import './pages/demo/syntax/loop4/index';
 import './pages/demo/syntax/extend/index';
 import './pages/demo/syntax/inlineStyle/index';
 import './pages/demo/syntax/if/index';
@@ -36,8 +36,6 @@ import './pages/demo/syntax/await/index';
 import './pages/demo/syntax/multiple/index';
 import './pages/demo/syntax/renderprops/index';
 import './pages/demo/syntax/request/index';
-
-// import './pages/demo/syntax/redux/index';
 
 import './pages/demo/ticketSearch/index';
 import './pages/demo/calendar/index';
@@ -51,7 +49,6 @@ import './pages/demo/cardList/index';
 import './pages/demo/citySelect/index';
 
 import './app.less';
-//import store from './store/index';
 
 class Demo extends React.Component {
     config = {
@@ -101,7 +98,6 @@ class Demo extends React.Component {
     }
     
 }
-// React.applyAppStore({});
 
 // eslint-disable-next-line
 App(new Demo());
