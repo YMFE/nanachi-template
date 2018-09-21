@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/YMFE/nanachi-template/issues"
   },
-  "homepage": "https://github.com/YMFE/nanachi-template#readme"
+  "homepage": "https://github.com/YMFE/nanachi-template#readme",
+  "dependencies": {
+    "regenerator-runtime": "^0.12.1"
+  }
 }
