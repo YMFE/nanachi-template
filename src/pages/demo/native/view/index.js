@@ -2,7 +2,7 @@ import React from '@react';
 import './index.less';
 
 class P extends React.Component {
-    config = {
+    static config = {
         'navigationBarTextStyle': '#fff',
         'navigationBarBackgroundColor': '#0088a4',
         'navigationBarTitleText': 'view demo',

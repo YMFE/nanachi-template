@@ -46,7 +46,7 @@ class P extends React.Component {
             this.setState({city: app.globalData.citySelect});
         }
     }
-    config = {
+    static config = {
         backgroundColor: '#fff',
         navigationBarBackgroundColor: '#fff',
         navigationBarTitleText: '趣问答',

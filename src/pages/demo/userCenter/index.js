@@ -69,7 +69,7 @@ class P extends React.Component {
             showCancel: false
         });
     }
-    config = {
+    static config = {
         backgroundColor: '#fff',
         navigationBarBackgroundColor: '#fff',
         navigationBarTitleText: '个人中心',

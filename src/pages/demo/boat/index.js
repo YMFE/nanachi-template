@@ -29,7 +29,7 @@ class P extends React.Component {
             }
         }
     }
-    config = {
+    static config = {
         backgroundColor: '3399ff',
         navigationBarBackgroundColor: '#3399ff',
         navigationBarTitleText: '船票',

@@ -23,7 +23,7 @@ class P extends React.Component {
             }
         });
     }
-    config = {
+    static config = {
         backgrounColor: '#FFF',
         navigationBarBackgroundColor: '#fa541c',
         navigationBarTitleText: '去哪儿攻略',

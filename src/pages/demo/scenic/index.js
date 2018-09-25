@@ -29,7 +29,7 @@ class P extends React.Component {
             showCancel: false
         });
     }
-    config = {
+    static config = {
         backgrounColor: '#FFF',
         navigationBarBackgroundColor: '#1890ff',
         navigationBarTitleText: '景点门票',

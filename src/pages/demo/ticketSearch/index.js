@@ -62,7 +62,7 @@ class P extends React.Component {
     handleChangeSwitch() {
         this.setState({ isOnlyGaotie: !this.state.isOnlyGaotie });
     }
-  config = {
+  static config = {
       backgroundColor: '#feb64e',
       navigationBarBackgroundColor: '#feb64e',
       navigationBarTitleText: '车牌搜索'

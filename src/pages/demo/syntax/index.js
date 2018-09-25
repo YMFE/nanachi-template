@@ -64,7 +64,7 @@ class Express extends React.Component {
             ]
         };
     }
-    config = {
+    static config = {
         'navigationBarTextStyle': '#fff',
         'navigationBarBackgroundColor': '#0088a4',
         'navigationBarTitleText': 'Demo',

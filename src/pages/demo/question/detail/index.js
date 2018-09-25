@@ -27,7 +27,7 @@ class P extends React.Component {
     switchSortkey() {
         this.setState({sortkey: this.state.sortkey === 'byTime' ? 'byHot' : 'byTime'});
     }
-    config = {
+    static config = {
         backgroundColor: '#fff',
         navigationBarBackgroundColor: '#fff',
         navigationBarTitleText: '问答详情',
