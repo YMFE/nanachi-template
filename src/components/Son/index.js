@@ -7,11 +7,11 @@ class Son extends React.Component {
 
     componentDidMount() {
         /* eslint-disable */
-		console.log('Son did mount!');
-	}
-	render() {
-		return <div class="son">最内层组件</div>;
-	}
+        console.log('Son did mount!');
+    }
+    render() {
+        return <div class="son">最内层组件</div>;
+    }
 }
 
 export default Son;

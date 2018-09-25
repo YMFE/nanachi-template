@@ -9,7 +9,7 @@ class Calendar extends React.Component {
         };
     }
     componentDidMount() {
-    // 显示月份数
+        // 显示月份数
         const SHOWMONTH = 3;
 
         let data = [],
@@ -97,26 +97,48 @@ class Calendar extends React.Component {
                         );
                     })}
                 </div>
-                <scroll-view class="m-calendar" scroll-y="true" scroll-into-div={this.state.todivId}>
+                <scroll-view
+                    class="m-calendar"
+                    scroll-y="true"
+                    scroll-into-div={this.state.todivId}
+                >
                     {this.state.calendarArray.map(function(month, idx) {
                         return (
                             <div key={idx}>
                                 <div class="e-month">
                                     <div class="b-header">{month.date}</div>
-                                    {month.daysArray.map(function(itemRow, Row) {
+                                    {month.daysArray.map(function(
+                                        itemRow,
+                                        Row
+                                    ) {
                                         return (
                                             <div class="b-row" key={Row}>
-                                                {itemRow.map(function(item1, index1) {
+                                                {itemRow.map(function(
+                                                    item1,
+                                                    index1
+                                                ) {
                                                     return (
                                                         <block key={index1}>
                                                             {item1.isBlank ? (
                                                                 <div class="item" />
                                                             ) : (
                                                                 <div
-                                                                    onTap={this.getDate.bind(this, item1.date)}
-                                                                    class={'item item-a ' + (item1.isWeekend ? 'weekend' : '')}
+                                                                    onTap={this.getDate.bind(
+                                                                        this,
+                                                                        item1.date
+                                                                    )}
+                                                                    class={
+                                                                        'item item-a ' +
+                                                                        (item1.isWeekend
+                                                                            ? 'weekend'
+                                                                            : '')
+                                                                    }
                                                                 >
-                                                                    <div class="day">{item1.showDate}</div>
+                                                                    <div class="day">
+                                                                        {
+                                                                            item1.showDate
+                                                                        }
+                                                                    </div>
                                                                 </div>
                                                             )}
                                                         </block>

@@ -43,11 +43,11 @@ class P extends React.Component {
             text: textAry.join('\n')
         });
     }
-    componentWillMount(){
+    componentWillMount() {
         // eslint-disable-next-line
         console.log('base componentWillMount');
     }
-    componentDidMount(){
+    componentDidMount() {
         // eslint-disable-next-line
         console.log('base componentDidMount');
     }
@@ -71,7 +71,15 @@ class P extends React.Component {
                     <div class="group">
                         {this.state.iconColor.map(function(item) {
                             return (
-                                <icon type="success" size="40" color={item} style={{margin:'1rpx', border:'1px solid ' +item }}  />
+                                <icon
+                                    type="success"
+                                    size="40"
+                                    color={item}
+                                    style={{
+                                        margin: '1rpx',
+                                        border: '1px solid ' + item
+                                    }}
+                                />
                             );
                         })}
                     </div>

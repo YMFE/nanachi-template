@@ -1,6 +1,7 @@
 import React from '@react';
 import './pages/index/index';
 
+
 import './pages/demo/base/index';
 
 import './pages/demo/native/index/index';
@@ -28,6 +29,7 @@ import './pages/demo/syntax/loop/index';
 import './pages/demo/syntax/loop2/index';
 import './pages/demo/syntax/loop3/index';
 import './pages/demo/syntax/loop4/index';
+
 import './pages/demo/syntax/extend/index';
 import './pages/demo/syntax/inlineStyle/index';
 import './pages/demo/syntax/if/index';
@@ -36,6 +38,9 @@ import './pages/demo/syntax/await/index';
 import './pages/demo/syntax/multiple/index';
 import './pages/demo/syntax/renderprops/index';
 import './pages/demo/syntax/request/index';
+
+import './pages/demo/syntax/redux/index';
+import './pages/demo/syntax/redux2/index';
 
 import './pages/demo/ticketSearch/index';
 import './pages/demo/calendar/index';
@@ -49,6 +54,7 @@ import './pages/demo/cardList/index';
 import './pages/demo/citySelect/index';
 
 import './app.less';
+import store from './store/index';
 
 class Demo extends React.Component {
     static config = {
@@ -98,6 +104,8 @@ class Demo extends React.Component {
     }
     
 }
-
+//这样写相当于为每一个页面组件的外面都加上一个<Provider />，如果你想在页面上用到store里的数据，
+//需要用react-redux的connect方法包一下，详见pages/demo/syntax/redux
+React.applyAppStore(store);
 // eslint-disable-next-line
 App(new Demo());

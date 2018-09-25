@@ -7,16 +7,16 @@ class Parent extends React.Component {
 
     componentDidMount() {
         /* eslint-disable */
-		console.log('Parent did mount!');
-	}
-	render() {
-		return (
-			<div class="parent">
-				<div class="title">第二层组件</div>
-				<Son />
-			</div>
-		);
-	}
+        console.log('Parent did mount!');
+    }
+    render() {
+        return (
+            <div class="parent">
+                <div class="title">第二层组件</div>
+                <Son />
+            </div>
+        );
+    }
 }
 
 export default Parent;
