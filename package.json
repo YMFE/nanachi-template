@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/YMFE/nanachi-template#readme",
   "dependencies": {
+    "@rematch/core": "^0.6.0",
+    "react-redux": "^5.0.7",
     "regenerator-runtime": "^0.12.1"
   }
 }

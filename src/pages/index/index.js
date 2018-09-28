@@ -1,6 +1,5 @@
 import React from '@react';
 import './index.less';
-// eslint-disable-next-line
 class P extends React.Component {
     constructor() {
         super();
@@ -225,8 +224,7 @@ class P extends React.Component {
                       <div class="right-content">
                           <div onTap={this.fun_tip} class="right-content-wrapper">
                               <image
-                                  src="https://img1.qunarzz.com/order/comp/1808/3b/fd717d94ed8b6102.jpg
-"
+                                  src="https://img1.qunarzz.com/order/comp/1808/3b/fd717d94ed8b6102.jpg"
                               />
                               <div class="content">
                                   <text class="title">人格测试</text>
